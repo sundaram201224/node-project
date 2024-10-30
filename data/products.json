@@ -1,0 +1,227 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Samsung m31",
+      "model": "M31 pro",
+      "brand": "Samsung",
+      "price": 29.99,
+      "description": "Flagship smartphone with 5G connectivity and 120Hz display.",
+      "category": "Mobile Phones",
+      "stock": 25,
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Apple",
+      "model": "MacBook Air M3",
+      "brand": "Apple",
+      "price": 15,
+      "description": "Ultra-light laptop with the powerful M1 chip.",
+      "category": "Laptops",
+      "stock": 15,
+      "rating": 4.8
+    },
+    {
+      "id": 3,
+      "name": "Bluetooth Speaker",
+      "model": "SoundLink Mini II",
+      "brand": "Bose",
+      "price": 199.99,
+      "description": "Portable Bluetooth speaker with deep bass and 12-hour battery life.",
+      "category": "Audio",
+      "stock": 30,
+      "rating": 4.7
+    },
+    {
+      "id": 4,
+      "name": "Smartwatch",
+      "model": "Series 7",
+      "brand": "Apple",
+      "price": 399.99,
+      "description": "Advanced health monitoring and always-on Retina display.",
+      "category": "Wearables",
+      "stock": 20,
+      "rating": 4.6
+    },
+    {
+      "id": 5,
+      "name": "Gaming Console",
+      "model": "PlayStation 5",
+      "brand": "Sony",
+      "price": 499.99,
+      "description": "Next-gen gaming with ultra-fast SSD and ray-tracing support.",
+      "category": "Gaming",
+      "stock": 10,
+      "rating": 4.9
+    },
+    {
+      "id": 6,
+      "name": "Wireless Earbuds",
+      "model": "AirPods Pro",
+      "brand": "Apple",
+      "price": 249.99,
+      "description": "Active noise cancellation and immersive sound quality.",
+      "category": "Audio",
+      "stock": 50,
+      "rating": 4.7
+    },
+    {
+      "id": 7,
+      "name": "Smart TV",
+      "model": "QLED Q80A",
+      "brand": "Samsung",
+      "price": 1299.99,
+      "description": "4K UHD QLED TV with Quantum HDR and Alexa compatibility.",
+      "category": "Television",
+      "stock": 8,
+      "rating": 4.8
+    },
+    {
+      "id": 8,
+      "name": "Tablet",
+      "model": "iPad Pro 12.9",
+      "brand": "Apple",
+      "price": 1099.99,
+      "description": "Larger display with the M1 chip and 5G support.",
+      "category": "Tablets",
+      "stock": 12,
+      "rating": 4.9
+    },
+    {
+      "id": 9,
+      "name": "Smart Speaker",
+      "model": "Echo Dot 4th Gen",
+      "brand": "Amazon",
+      "price": 49.99,
+      "description": "Smart speaker with Alexa and improved sound quality.",
+      "category": "Smart Home",
+      "stock": 60,
+      "rating": 4.6
+    },
+    {
+      "id": 10,
+      "name": "Gaming Laptop",
+      "model": "Legion 5 Pro",
+      "brand": "Lenovo",
+      "price": 1499.99,
+      "description": "Powerful gaming laptop with NVIDIA RTX 3060 GPU.",
+      "category": "Laptops",
+      "stock": 18,
+      "rating": 4.5
+    },
+    {
+      "id": 11,
+      "name": "Smartphone",
+      "model": "Pixel 6",
+      "brand": "Google",
+      "price": 599.99,
+      "description": "Google's latest smartphone with AI-enhanced camera.",
+      "category": "Mobile Phones",
+      "stock": 22,
+      "rating": 4.7
+    },
+    {
+      "id": 12,
+      "name": "Noise-Canceling Headphones",
+      "model": "WH-1000XM4",
+      "brand": "Sony",
+      "price": 349.99,
+      "description": "Industry-leading noise-cancellation and premium sound.",
+      "category": "Audio",
+      "stock": 40,
+      "rating": 4.8
+    },
+    {
+      "id": 14,
+      "name": "Wireless Charger",
+      "model": "MagSafe Charger",
+      "brand": "Apple",
+      "price": 40.99,
+      "description": "Magnetically aligns for easy wired charging.",
+      "category": "Accessories",
+      "stock": 60,
+      "rating": 4.8
+    },
+    {
+      "id": 15,
+      "name": "Streaming Device",
+      "model": "Roku Ultra",
+      "brand": "Roku",
+      "price": 99.99,
+      "description": "4K streaming with Dolby Vision and HDR10 support.",
+      "category": "Smart Home",
+      "stock": 35,
+      "rating": 4.6
+    },
+    {
+      "id": 16,
+      "name": "External SSD",
+      "model": "T7 Portable",
+      "brand": "Samsung",
+      "price": 129.99,
+      "description": "Fast portable SSD with 1TB storage.",
+      "category": "Storage",
+      "stock": 25,
+      "rating": 4.7
+    },
+    {
+      "id": 17,
+      "name": "Robot Vacuum",
+      "model": "Roomba i7",
+      "brand": "iRobot",
+      "price": 499.99,
+      "description": "Smart vacuum cleaner with Wi-Fi connectivity.",
+      "category": "Home Appliances",
+      "stock": 12,
+      "rating": 4.5
+    },
+    {
+      "id": 18,
+      "name": "Smart Light Bulbs",
+      "model": "Hue White & Color",
+      "brand": "Philips",
+      "price": 49.99,
+      "description": "Smart LED bulbs with millions of colors.",
+      "category": "Smart Home",
+      "stock": 100,
+      "rating": 4.6
+    },
+    {
+      "id": 19,
+      "name": "Wireless Gaming Mouse",
+      "model": "G502 Lightspeed",
+      "brand": "Logitech",
+      "price": 119.99,
+      "description": "High-performance wireless mouse for gamers.",
+      "category": "Accessories",
+      "stock": 45,
+      "rating": 4.8
+    },
+    {
+      "id": 20,
+      "name": "E-Reader",
+      "model": "Kindle Paperwhite",
+      "brand": "Amazon",
+      "price": 129.99,
+      "description": "Waterproof e-reader with a 6-inch display.",
+      "category": "Tablets",
+      "stock": 55,
+      "rating": 4.7
+    },
+    {
+      "model": "Surface Pro 8",
+      "brand": "Microsoft",
+      "price": 1099,
+      "category": "Tablet",
+      "features": {
+        "processor": "Intel i5",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "battery": "Battery up to 13 hours"
+      },
+      "stock": 15,
+      "id": 21
+    }
+  ]
+}
