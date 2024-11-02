@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-const fs = require('fs');
-const path = require('path');
 const cors = require('cors');
+const { readDataFile, writeDataFile } = require('./helper');
 
 const PORT = 4000;
 
@@ -11,33 +10,32 @@ app.use(cors());
 
 // Get all products
 app.get('/products', (req, res) => {
-  fs.readFile(path.join(__dirname, 'data/products.json'), 'utf8', (err, data) => {
+  readDataFile((err, jsonData) => {
     if (err) {
-      return res.status(500).send('Error reading the data file');
+      return res.status(500).send(err);
     }
     res.setHeader('Content-type', 'application/json');
-    res.status(200).send(data);
+    res.status(200).send(jsonData);
   });
 });
 
-//Add a new product
+// Add a new product
 app.post('/products', (req, res) => {
   const newProduct = req.body;
 
-  fs.readFile(path.join(__dirname, 'data/products.json'), 'utf8', (err, data) => {
+  readDataFile((err, jsonData) => {
     if (err) {
-      return res.status(500).send('Error reading the data file');
+      return res.status(500).send(err);
     }
 
-    const jsonData = JSON.parse(data); // Parses existing data into JSON
-    newProduct.id = jsonData.products.length + 1; // Generates a new ID
-    jsonData.products.push(newProduct); // Adds the new product to the list
+    newProduct.id = jsonData.products.length + 1; // Generate a new ID
+    jsonData.products.push(newProduct); // Add the new product to the list
 
-    fs.writeFile(path.join(__dirname, 'data/products.json'), JSON.stringify(jsonData, null, 2), (err) => {
-      if (err) {
-        return res.status(500).send('Error writing the data file');
+    writeDataFile(jsonData, (writeErr) => {
+      if (writeErr) {
+        return res.status(500).send(writeErr);
       }
-      res.status(201).json(newProduct); // Returns the new product as confirmation
+      res.status(201).json(newProduct); // Return the new product as confirmation
     });
   });
 });
@@ -46,15 +44,12 @@ app.post('/products', (req, res) => {
 app.delete('/products/:model', (req, res) => {
   const modelName = req.params.model;
 
-  fs.readFile(path.join(__dirname, 'data/products.json'), 'utf8', (err, data) => {
+  readDataFile((err, jsonData) => {
     if (err) {
-      return res.status(500).send('Error reading the data file');
+      return res.status(500).send(err);
     }
 
-    const jsonData = JSON.parse(data);
     const initialLength = jsonData.products.length;
-
-    // Filter out the product with the specified model name
     jsonData.products = jsonData.products.filter(
       (product) => product.model.toLowerCase() !== modelName.toLowerCase()
     );
@@ -63,71 +58,68 @@ app.delete('/products/:model', (req, res) => {
       return res.status(404).send('Product not found');
     }
 
-    fs.writeFile(path.join(__dirname, 'data/products.json'), JSON.stringify(jsonData, null, 2), (err) => {
-      if (err) {
-        return res.status(500).send('Error writing the data file');
+    writeDataFile(jsonData, (writeErr) => {
+      if (writeErr) {
+        return res.status(500).send(writeErr);
       }
       res.status(204).send();
     });
   });
 });
-//Put is used to change certain in the data/product 
+
+// Update a product by ID (PUT)
 app.put('/products/:id', (req, res) => {
   const productId = parseInt(req.params.id, 10);
   const updatedData = req.body;
 
-  fs.readFile(path.join(__dirname, 'data/products.json'), 'utf8', (err, data) => {
+  readDataFile((err, jsonData) => {
     if (err) {
-      return res.status(500).send('Error reading the data file');
+      return res.status(500).send(err);
     }
 
-    const jsonData = JSON.parse(data);
     const productIndex = jsonData.products.findIndex(product => product.id === productId);
-
     if (productIndex === -1) {
       return res.status(404).send('Product not found');
     }
 
     jsonData.products[productIndex] = { ...jsonData.products[productIndex], ...updatedData };
 
-    fs.writeFile(path.join(__dirname, 'data/products.json'), JSON.stringify(jsonData, null, 2), (err) => {
-      if (err) {
-        return res.status(500).send('Error writing the data file');
+    writeDataFile(jsonData, (writeErr) => {
+      if (writeErr) {
+        return res.status(500).send(writeErr);
       }
       res.status(200).json(jsonData.products[productIndex]);
     });
   });
 });
-// Partially update the product data
+
+// Partially update the product data (PATCH)
 app.patch('/products/:id', (req, res) => {
   const productId = parseInt(req.params.id, 10);
-  const updatedFields = req.body; // Only specified fields
+  const updatedFields = req.body;
 
-  fs.readFile(path.join(__dirname, 'data/products.json'), 'utf8', (err, data) => {
+  readDataFile((err, jsonData) => {
     if (err) {
-      return res.status(500).send('Error reading the data file');
+      return res.status(500).send(err);
     }
 
-    const jsonData = JSON.parse(data);
     const productIndex = jsonData.products.findIndex(product => product.id === productId);
-
     if (productIndex === -1) {
       return res.status(404).send('Product not found');
     }
 
-    // Update only the provided fields
     jsonData.products[productIndex] = { ...jsonData.products[productIndex], ...updatedFields };
 
-    fs.writeFile(path.join(__dirname, 'data/products.json'), JSON.stringify(jsonData, null, 2), (err) => {
-      if (err) {
-        return res.status(500).send('Error writing the data file');
+    writeDataFile(jsonData, (writeErr) => {
+      if (writeErr) {
+        return res.status(500).send(writeErr);
       }
       res.status(200).json(jsonData.products[productIndex]);
     });
   });
 });
 
-//console commanding for everythings
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
