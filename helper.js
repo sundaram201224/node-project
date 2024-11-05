@@ -1,39 +1,31 @@
-// helper.js
-const fs = require('fs');
-const path = require('path');
+const path = require('path'); 
+const fs = require('fs').promises;
 
-// Path to the products file
+// Define the path to the data file
 const filePath = path.join(__dirname, 'data/products.json');
 
-// Common function to read the products file
-const readDataFile = (callback) => {
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      callback(`Error reading the data file: ${err.message}`, null);
-    } else {
-      try {
-        const jsonData = JSON.parse(data);
-        callback(null, jsonData);
-      } catch (parseErr) {
-        callback(`Error parsing the data file: ${parseErr.message}`, null);
-      }
-    }
-  });
+// Function to read data from the file
+export const readDataFile = async () => {
+  console.log(`Reading file from path: ${filePath}`);
+  try {
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    console.log('File content read successfully');
+    return { error: null, data: JSON.parse(fileContent) };
+  } catch (error) {
+    console.log(`Error reading file: ${error.message}`);
+    return { error: `Error reading the data file: ${error.message}`, data: null };
+  }
 };
 
-// Common function to write the products file
-const writeDataFile = (data, callback) => {
-  fs.writeFile(filePath, JSON.stringify(data, null, 2), (err) => {
-    if (err) {
-      callback(`Error writing the data file: ${err.message}`);
-    } else {
-      callback(null);
-    }
-  });
-};
-
-// Exporting the functions for use in other files
-module.exports = {
-  readDataFile,
-  writeDataFile,
+// Function to write data to the file with error handling
+export const writeDataFile = async (data) => {
+  console.log(`Writing to file at path: ${filePath}`);
+  try {
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+    console.log('File written successfully');
+    return { error: null };
+  } catch (error) {
+    console.log(`Error writing file: ${error.message}`);
+    return { error: `Error writing the data file: ${error.message}` };
+  }
 };
